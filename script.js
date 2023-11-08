@@ -8,7 +8,11 @@ btn.addEventListener("click", () => {
   const futureTime = new Date(currentTime.getTime() + timer.value * 60000)
   endTime.innerText = futureTime.toLocaleTimeString()
   let time = timer.value
-  setInterval(() => {
+  countDown.innerText = time
+  let interval = setInterval(() => {
     countDown.innerText = --time
+    if (time === 0) {
+      clearInterval(interval)
+    }
   }, timer.value * 10000)
 })
